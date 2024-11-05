@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Settings() {
   const router = useRouter()
@@ -51,6 +52,16 @@ export default function Settings() {
               </Button>
             </div>
           </div>
+        </div>
+        <div className="space-y-4">
+            <Link href="https://github.com/Thekorzeremi/jdr_dashboard/issues">
+                <Button variant="outline" className="w-full">
+                    Reporter un bug
+                </Button>
+            </Link>
+        </div>
+        <div className="text-center">
+            <p className="text-xs text-black/50 mt-4">© Thekorzeremi 2024 - Made with ❤️</p>
         </div>
       </div>
     </div>

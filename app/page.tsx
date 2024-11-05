@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-gray-900 via-grey-400 to-gray-800 p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8">
         <h1 className="text-3xl font-bold text-center mb-6">Bienvenue sur JDR Dashboard</h1>
+        <h4 className="text-center mb-6">Un ensemble de ressources pour votre session de jeu de rôle</h4>
         {/* <form className="space-y-4">
           <div>
             <Label htmlFor="username">Nom d'utilisateur</Label>
@@ -35,6 +36,7 @@ export default function Home() {
           <Button className="w-full">Commencer</Button>
         </Link>
       </div>
+      <p className="text-xs text-white/50 mt-4">© Thekorzeremi 2024 - Made with ❤️</p>
     </div>
   )
 }
