@@ -122,7 +122,7 @@ export default function CharacterProfile() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="player">Joueur</SelectItem>
-                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="admin" disabled>Admin</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
