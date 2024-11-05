@@ -13,14 +13,10 @@ export default function Settings() {
   const handleReset = () => {
     if (window.confirm('Êtes-vous sûr de vouloir réinitialiser toutes les données ? Cette action est irréversible.')) {
       // Supprimer toutes les données du localStorage
-      localStorage.removeItem('character');          // Profil
-      localStorage.removeItem('characterStats');     // Statistiques
-      localStorage.removeItem('characterSkills');    // Compétences
-      localStorage.removeItem('healthPoints');       // Points de vie
-      localStorage.removeItem('inventoryItems');     // Inventaire
-
-      // Recharger la page pour réinitialiser tous les états
-      window.location.reload();
+      localStorage.clear(); // Supprime tout le localStorage
+      
+      // Rediriger vers la page d'accueil
+      router.push('/');
     }
   }
 
