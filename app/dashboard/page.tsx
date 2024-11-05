@@ -21,7 +21,6 @@ interface SetupStep {
 }
 
 export default function Dashboard() {
-  const [isFirstVisit, setIsFirstVisit] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
   
@@ -317,7 +316,6 @@ export default function Dashboard() {
     const hasCharacterData = localStorage.getItem('character')
     
     if (!hasVisited || !hasCharacterData) {
-      setIsFirstVisit(true)
       setIsModalOpen(true)
       localStorage.setItem('hasVisitedBefore', 'true')
     }
