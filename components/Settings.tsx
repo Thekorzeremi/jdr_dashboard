@@ -42,15 +42,6 @@ export default function Settings() {
                 Cette action effacera toutes vos données (profil, stats, compétences, inventaire, etc.)
               </p>
             </div>
-            <div>
-              <Button 
-                onClick={handleLogout} 
-                variant="destructive" 
-                className="w-full"
-              >
-                Se déconnecter
-              </Button>
-            </div>
           </div>
         </div>
         <div className="space-y-4">
