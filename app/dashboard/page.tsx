@@ -20,6 +20,21 @@ interface SetupStep {
   component: JSX.Element;
 }
 
+interface Skill {
+  id: string;
+  name: string;
+  type: string;
+  value: string;
+  description: string;
+}
+
+interface InventoryItem {
+  id: string;
+  name: string;
+  quantity: string;
+  description: string;
+}
+
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
@@ -40,8 +55,8 @@ export default function Dashboard() {
     "Mana": { groupValue: 0, values: { "Réserve": 0, "Puissance": 0, "Maîtrise": 0 } }
   })
 
-  const [skills, setSkills] = useState<Array<any>>([])
-  const [inventory, setInventory] = useState<Array<any>>([])
+  const [skills, setSkills] = useState<Skill[]>([])
+  const [inventory, setInventory] = useState<InventoryItem[]>([])
 
   const ProfileSetup = (
     <div className="space-y-4">
