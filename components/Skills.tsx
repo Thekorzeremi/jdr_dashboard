@@ -113,7 +113,7 @@ export default function Skills() {
           </Dialog>
           {skills.length > 0 && (
             <Button variant="outline" onClick={resetSkills}>
-              Réinitialiser
+              Reset
             </Button>
           )}
         </div>

@@ -107,7 +107,7 @@ export default function Inventory() {
           </Dialog>
           {items.length > 0 && (
             <Button variant="outline" onClick={resetInventory}>
-              Réinitialiser
+              Reset
             </Button>
           )}
         </div>
