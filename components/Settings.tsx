@@ -7,10 +7,6 @@ import Link from 'next/link'
 export default function Settings() {
   const router = useRouter()
 
-  const handleLogout = () => {
-    router.push('/')
-  }
-
   const handleReset = () => {
     if (window.confirm('Êtes-vous sûr de vouloir réinitialiser toutes les données ? Cette action est irréversible.')) {
       // Supprimer toutes les données du localStorage
