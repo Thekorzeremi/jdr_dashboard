@@ -39,6 +39,8 @@ function App() {
           skills: [
             { 
               name: 'Compétence 1', 
+              type: 'skill',
+              description: 'Description de la compétence',
               level: 2 
             }
           ],
@@ -98,9 +100,9 @@ function App() {
     }));
   }
 
-  const updateSkillLevel = (index, level) => {
+  const updateSkillLevel = (index, value, field) => {
     const newSkills = [...character.skills];
-    newSkills[index].level = level;
+    newSkills[index][field] = value;
     setCharacter((prev) => ({ ...prev, skills: newSkills }));
   };
 
@@ -108,6 +110,13 @@ function App() {
     setCharacter((prev) => ({
       ...prev,
       inventory: [...prev.inventory, { itemName: 'Nouvel Objet', quantity: 1 }],
+    }));
+  };
+
+  const addSkill = () => {
+    setCharacter((prev) => ({
+      ...prev,
+      skills: [...prev.skills, { name: 'Nouvelle Compétence', type: 'skill', description: 'Description de la compétence', level: 1 }],
     }));
   };
 
@@ -123,7 +132,7 @@ function App() {
         <Routes>
           <Route path="/stats" element={<Stats stats={character.stats} updateStats={updateStats} />} />
           <Route path="/damage" element={<DamageZones damageZones={character.damageZones} updateDamage={updateDamage} />} />
-          <Route path="/skills" element={<Skills skills={character.skills} updateSkillLevel={updateSkillLevel} />} />
+          <Route path="/skills" element={<Skills skills={character.skills} updateSkillLevel={updateSkillLevel} addSkill={addSkill} />} />
           <Route path="/inventory" element={<Inventory inventory={character.inventory} addItem={addItem} updateItem={updateItem} />} />
           <Route path="/profile" element={<Profile profile={character.profile} updateProfile={updateProfile}/>}></Route>
         </Routes>
