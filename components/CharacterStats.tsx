@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Plus, Minus } from "lucide-react"
@@ -9,11 +9,37 @@ interface StatValue {
   [key: string]: number
 }
 
-const StatGroup = ({ title, stats }: { title: string, stats: string[] }) => {
-  const [groupValue, setGroupValue] = useState<number>(0)
+interface GroupData {
+  groupValue: number;
+  values: StatValue;
+}
+
+interface StatsData {
+  [key: string]: GroupData;
+}
+
+const StatGroup = ({ 
+  title, 
+  stats, 
+  savedData,
+  onUpdate 
+}: { 
+  title: string, 
+  stats: string[], 
+  savedData?: GroupData,
+  onUpdate: (title: string, data: GroupData) => void 
+}) => {
+  const [groupValue, setGroupValue] = useState<number>(savedData?.groupValue || 0)
   const [values, setValues] = useState<StatValue>(
-    stats.reduce((acc, stat) => ({ ...acc, [stat]: 0 }), {})
+    savedData?.values || stats.reduce((acc, stat) => ({ ...acc, [stat]: 0 }), {})
   )
+
+  useEffect(() => {
+    if (JSON.stringify(savedData?.values) !== JSON.stringify(values) || 
+        savedData?.groupValue !== groupValue) {
+      onUpdate(title, { groupValue, values });
+    }
+  }, [groupValue, values, title, onUpdate, savedData]);
 
   const handleChange = (stat: string, increment: number) => {
     setValues(prev => ({
@@ -88,12 +114,51 @@ export default function CharacterStats() {
     "Mana": ["Réserve", "Puissance", "Maîtrise"]
   }
 
+  const [statsData, setStatsData] = useState<StatsData>(() => {
+    if (typeof window !== 'undefined') {
+      const savedStats = localStorage.getItem('characterStats');
+      if (savedStats) {
+        return JSON.parse(savedStats);
+      }
+    }
+    return Object.keys(allStats).reduce((acc, key) => ({
+      ...acc,
+      [key]: {
+        groupValue: 0,
+        values: allStats[key as keyof typeof allStats].reduce((statAcc, stat) => ({ ...statAcc, [stat]: 0 }), {})
+      }
+    }), {});
+  });
+
+  useEffect(() => {
+    const savedStats = localStorage.getItem('characterStats');
+    if (savedStats !== JSON.stringify(statsData)) {
+      localStorage.setItem('characterStats', JSON.stringify(statsData));
+    }
+  }, [statsData]);
+
+  const handleGroupUpdate = (title: string, data: GroupData) => {
+    setStatsData(prev => {
+      const newData = {
+        ...prev,
+        [title]: data
+      };
+      return JSON.stringify(newData) !== JSON.stringify(prev) ? newData : prev;
+    });
+  };
+
   return (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold">Statistiques</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {Object.entries(allStats).map(([title, stats]) => (
-          <StatGroup key={title} title={title} stats={stats} />
+          <StatGroup 
+            key={title} 
+            title={title} 
+            stats={stats} 
+            savedData={statsData[title]}
+            onUpdate={handleGroupUpdate}
+          />
         ))}
       </div>
     </div>

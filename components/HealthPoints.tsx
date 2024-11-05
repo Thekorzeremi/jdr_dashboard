@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -32,26 +32,50 @@ const initialBodyParts: BodyPart[] = [
 ]
 
 export default function HealthPoints() {
-  const [bodyParts, setBodyParts] = useState<BodyPart[]>(initialBodyParts)
+  const [bodyParts, setBodyParts] = useState<BodyPart[]>(() => {
+    if (typeof window !== 'undefined') {
+      const savedHealth = localStorage.getItem('healthPoints');
+      if (savedHealth) {
+        return JSON.parse(savedHealth);
+      }
+    }
+    return initialBodyParts;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('healthPoints', JSON.stringify(bodyParts));
+  }, [bodyParts]);
 
   const decrementHealth = (index: number) => {
-    const updatedBodyParts = [...bodyParts]
+    const updatedBodyParts = [...bodyParts];
     if (updatedBodyParts[index].currentHealth > 0) {
-      updatedBodyParts[index].currentHealth -= 1
-      setBodyParts(updatedBodyParts)
+      updatedBodyParts[index].currentHealth -= 1;
+      setBodyParts(updatedBodyParts);
     }
   }
 
+  const resetHealth = () => {
+    setBodyParts(initialBodyParts);
+  }
+
   const getHealthColor = (current: number, max: number) => {
-    const percentage = (current / max) * 100
-    if (percentage > 66) return 'bg-green-500'
-    if (percentage > 33) return 'bg-yellow-500'
-    return 'bg-red-500'
+    const percentage = (current / max) * 100;
+    if (percentage > 66) return 'bg-green-500';
+    if (percentage > 33) return 'bg-yellow-500';
+    return 'bg-red-500';
   }
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-bold">Points de Santé</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-bold">Points de Santé</h2>
+        <button 
+          onClick={resetHealth}
+          className="text-sm text-blue-600 hover:text-blue-800"
+        >
+          Réinitialiser
+        </button>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="relative w-full max-w-[300px] mx-auto lg:mx-0 aspect-[3/4]">
           <svg viewBox="0 0 100 133" className="w-full h-full">
