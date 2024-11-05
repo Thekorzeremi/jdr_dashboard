@@ -6,6 +6,7 @@ import CharacterStats from '@/components/CharacterStats'
 import Skills from '@/components/Skills'
 import HealthPoints from '@/components/HealthPoints'
 import Inventory from '@/components/Inventory'
+import Settings from '@/components/Settings'
 
 export default function Dashboard() {
   return (
@@ -27,12 +28,16 @@ export default function Dashboard() {
           <TabsContent value="inventory">
             <Inventory />
           </TabsContent>
-          <TabsList className="fixed bottom-0 left-0 right-0 grid w-full grid-cols-5 bg-white border-t shadow-lg">
+          <TabsContent value="settings">
+            <Settings />
+          </TabsContent>
+          <TabsList className="fixed bottom-0 left-0 right-0 grid w-full grid-cols-6 bg-white border-t shadow-lg">
             <TabsTrigger value="profile">Profil</TabsTrigger>
             <TabsTrigger value="stats">Stats</TabsTrigger>
             <TabsTrigger value="skills">Compétences</TabsTrigger>
             <TabsTrigger value="health">Santé</TabsTrigger>
             <TabsTrigger value="inventory">Inventaire</TabsTrigger>
+            <TabsTrigger value="settings">Paramètres</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>

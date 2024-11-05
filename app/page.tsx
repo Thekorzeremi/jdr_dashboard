@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8">
-        <h1 className="text-3xl font-bold text-center mb-6">Bienvenue sur l'Outil JDR</h1>
-        <form className="space-y-4">
+        <h1 className="text-3xl font-bold text-center mb-6">Bienvenue sur JDR Dashboard</h1>
+        {/* <form className="space-y-4">
           <div>
             <Label htmlFor="username">Nom d'utilisateur</Label>
             <Input id="username" type="text" placeholder="Entrez votre nom d'utilisateur" />
@@ -24,13 +24,16 @@ export default function Home() {
           <Link href="/dashboard">
             <Button className="w-full">S'inscrire</Button>
           </Link>
-        </form>
-        <p className="mt-4 text-center text-sm">
+        </form> */}
+        {/* <p className="mt-4 text-center text-sm">
           Déjà un compte ?{" "}
           <Link href="/login" className="text-blue-600 hover:underline">
             Se connecter
           </Link>
-        </p>
+        </p> */}
+        <Link href="/dashboard">
+          <Button className="w-full">Commencer</Button>
+        </Link>
       </div>
     </div>
   )
