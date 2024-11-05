@@ -78,7 +78,7 @@ export default function Skills() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Compétences</h2>
+        <h2 className="text-2xl font-bold">Skills</h2>
         <div className="space-x-2">
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
