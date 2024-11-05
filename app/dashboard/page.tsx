@@ -464,7 +464,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 gap-4">
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("stats")
@@ -481,7 +481,7 @@ export default function Dashboard() {
 
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("skills")
@@ -498,7 +498,7 @@ export default function Dashboard() {
 
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("health")
@@ -514,7 +514,7 @@ export default function Dashboard() {
 
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("inventory")
@@ -532,7 +532,7 @@ export default function Dashboard() {
 
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("profile")
@@ -548,7 +548,7 @@ export default function Dashboard() {
 
               <Button
                 variant="outline"
-                className="flex flex-col items-center gap-2 h-24"
+                className="flex flex-col items-center gap-2 h-16"
                 onClick={() => {
                   setIsMenuOpen(false)
                   setActiveTab("settings")
