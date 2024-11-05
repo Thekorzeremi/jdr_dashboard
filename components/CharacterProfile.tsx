@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -18,17 +18,29 @@ interface Character {
 }
 
 export default function CharacterProfile() {
-  const [character, setCharacter] = useState<Character>({
-    name: "John Doe",
-    population: "Humain",
-    ethnicity: "Caucasien",
-    age: 30,
-    role: "player",
-    avatar: "/default-avatar.jpg"
-  })
+  const [character, setCharacter] = useState<Character>(() => {
+    if (typeof window !== 'undefined') {
+      const savedCharacter = localStorage.getItem('character');
+      if (savedCharacter) {
+        return JSON.parse(savedCharacter);
+      }
+    }
+    return {
+      name: "John Doe",
+      population: "Humain",
+      ethnicity: "Caucasien",
+      age: 30,
+      role: "player",
+      avatar: "/default-avatar.jpg"
+    };
+  });
 
   const [isOpen, setIsOpen] = useState(false)
   const [editedCharacter, setEditedCharacter] = useState<Character>(character)
+
+  useEffect(() => {
+    localStorage.setItem('character', JSON.stringify(character));
+  }, [character]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
