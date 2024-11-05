@@ -10,6 +10,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Outil JDR',
   description: 'Un outil pour gérer vos personnages de jeu de rôle',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
