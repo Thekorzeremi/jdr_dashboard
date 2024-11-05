@@ -422,11 +422,11 @@ export default function Dashboard() {
       </Dialog>
 
       <div className="min-h-screen bg-gray-100 p-4 pb-20 relative">
-        <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-xl p-6 mt-16">
+        <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6 mt-16">
           <Button
             variant="outline"
             size="icon"
-            className="fixed top-4 left-4 h-12 w-12 shadow-sm"
+            className="fixed top-4 left-4 h-12 w-12 shadow-md"
             onClick={() => setIsMenuOpen(true)}
           >
             <Menu className="h-6 w-6" />
