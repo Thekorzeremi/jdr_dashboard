@@ -14,27 +14,60 @@ function App() {
       ? JSON.parse(savedData)
       : {
           profile: { "Nom : ": "Nom", "Population : ": "0", "Ethnie : ": "0", "Âge : ": 1, "Rôle : ": "Aucun" },
-          stats: { "Constitution": 0, 
-                   "Vitalité": 0,
-                   "Resistance": 0,
-                   "Endurance": 0,
-                   "Habilité": 0,
-                   "Force": 0,
-                   "Dex": 0,
-                   "Rapidité": 0,
-                   "Mental": 0,
-                   "Acuité": 0,
-                   "Raison": 0,
-                   "Process": 0,
-                   "Mana": 0,
-                   "Réserve": 0,
-                   "Puissance": 0,
-                   "Maitrise": 0 
-                  },
-          health: { max: 100, current: 80 },
-          skills: [{ name: 'Compétence 1', level: 2 }],
-          inventory: [{ name: 'Épée', quantity: 1 }],
-          damageZones: { head: 0, torso: 0, leftArm: 0 },
+          stats: { 
+            "Constitution": 0, 
+            "Vitalité": 0,
+            "Resistance": 0,
+            "Endurance": 0,
+            "Habilité": 0,
+            "Force": 0,
+            "Dex": 0,
+            "Rapidité": 0,
+            "Mental": 0,
+            "Acuité": 0,
+            "Raison": 0,
+            "Process": 0,
+            "Mana": 0,
+            "Réserve": 0,
+            "Puissance": 0,
+            "Maitrise": 0 
+          },
+          health: { 
+            max: 100, 
+            current: 80 
+          },
+          skills: [
+            { 
+              name: 'Compétence 1', 
+              level: 2 
+            }
+          ],
+          inventory: [
+            { 
+              name: 'Épée', 
+              quantity: 1 
+            }
+          ],
+          damageZones: { 
+            head: 5, 
+            torso: 5, 
+            leftShoulder: 0,
+            rightShoulder: 0,
+            leftArm: 0,
+            rightArm: 0,
+            leftForearm: 0,
+            rightForearm: 0,
+            leftHand: 0,
+            rightHand: 0,
+            leftHip: 0,
+            rightHip: 0,
+            leftThigh: 0,
+            rightThigh: 0,
+            leftLeg: 0,
+            rightLeg: 0,
+            leftFoot: 0,
+            rightFoot: 0
+          },
         };
   };
 
@@ -54,7 +87,7 @@ function App() {
   const updateDamage = (zone) => {
     setCharacter((prev) => ({
       ...prev,
-      damageZones: { ...prev.damageZones, [zone]: prev.damageZones[zone] + 1 },
+      damageZones: { ...prev.damageZones, [zone]: Math.max(0, prev.damageZones[zone] - 1) },
     }));
   };
 
