@@ -69,12 +69,6 @@ export default function Skills() {
     setIsOpen(true)
   }
 
-  const resetSkills = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir réinitialiser toutes les compétences ?')) {
-      setSkills([]);
-    }
-  }
-
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -111,11 +105,6 @@ export default function Skills() {
               </form>
             </DialogContent>
           </Dialog>
-          {skills.length > 0 && (
-            <Button variant="outline" onClick={resetSkills}>
-              Reset
-            </Button>
-          )}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

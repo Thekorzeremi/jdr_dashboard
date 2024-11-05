@@ -67,13 +67,6 @@ export default function Inventory() {
     setIsOpen(true)
   }
 
-  const resetInventory = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir réinitialiser tout l\'inventaire ?')) {
-      setItems([]);
-    }
-  }
-
-  return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Inventaire</h2>
@@ -105,11 +98,6 @@ export default function Inventory() {
               </form>
             </DialogContent>
           </Dialog>
-          {items.length > 0 && (
-            <Button variant="outline" onClick={resetInventory}>
-              Reset
-            </Button>
-          )}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

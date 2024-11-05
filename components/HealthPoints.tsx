@@ -54,10 +54,6 @@ export default function HealthPoints() {
     }
   }
 
-  const resetHealth = () => {
-    setBodyParts(initialBodyParts);
-  }
-
   const getHealthColor = (current: number, max: number) => {
     const percentage = (current / max) * 100;
     if (percentage > 66) return 'bg-green-500';
@@ -68,13 +64,7 @@ export default function HealthPoints() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">Points de Santé</h2>
-        <button 
-          onClick={resetHealth}
-          className="text-sm text-blue-600 hover:text-blue-800"
-        >
-          Réinitialiser
-        </button>
+        <h2 className="text-xl font-bold">Santé</h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="relative w-full max-w-[300px] mx-auto lg:mx-0 aspect-[3/4]">
