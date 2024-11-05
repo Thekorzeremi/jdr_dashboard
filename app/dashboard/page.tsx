@@ -426,7 +426,7 @@ export default function Dashboard() {
           <Button
             variant="ghost"
             size="icon"
-            className="fixed bottom-4 right-4 h-12 w-12 rounded-full shadow-lg"
+            className="fixed bottom-4 left-4 h-12 w-12 rounded-full shadow-lg"
             onClick={() => setIsMenuOpen(true)}
           >
             <Menu className="h-6 w-6" />
