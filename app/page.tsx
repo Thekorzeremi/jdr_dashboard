@@ -68,7 +68,7 @@ export default function Home() {
               onClick={handleAccept}
               className="w-full"
             >
-              J'accepte
+              Je comprends et accepte
             </Button>
           </div>
         </div>
