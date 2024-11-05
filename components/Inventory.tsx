@@ -68,7 +68,7 @@ export default function Inventory() {
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="name">Nom de l'objet</Label>
+                <Label htmlFor="name">Nom</Label>
                 <Input id="name" defaultValue={editingItem?.name} required />
               </div>
               <div>
