@@ -35,6 +35,22 @@ interface InventoryItem {
   description: string;
 }
 
+interface StatValues {
+  [key: string]: number;
+}
+
+interface StatCategory {
+  groupValue: number;
+  values: StatValues;
+}
+
+interface Stats {
+  Constitution: StatCategory;
+  Habileté: StatCategory;
+  Mental: StatCategory;
+  Mana: StatCategory;
+}
+
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
@@ -48,7 +64,7 @@ export default function Dashboard() {
     avatar: "/default-avatar.jpg"
   })
 
-  const [stats, setStats] = useState({
+  const [stats, setStats] = useState<Stats>({
     "Constitution": { groupValue: 0, values: { "Vitalité": 0, "Résistance": 0, "Endurance": 0 } },
     "Habileté": { groupValue: 0, values: { "Force": 0, "Dextérité": 0, "Rapidité": 0 } },
     "Mental": { groupValue: 0, values: { "Acuité": 0, "Raison": 0, "Process": 0 } },
@@ -102,7 +118,7 @@ export default function Dashboard() {
 
   const StatsSetup = (
     <div className="space-y-4">
-      {Object.entries(stats).map(([category, data]) => (
+      {(Object.entries(stats) as [keyof Stats, StatCategory][]).map(([category, data]) => (
         <div key={category} className="p-4 border rounded">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold">{category}</h3>
